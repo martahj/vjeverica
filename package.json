@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node app",
-    "startRender": "node ssrenderapp",
+    "start": "node app_client",
+    "ssr": "node app_ssr",
     "test": "test",
     "dev": "webpack-dev-server --progress --color",
     "serverBundle": "webpack --config webpack-server-config.js --watch"

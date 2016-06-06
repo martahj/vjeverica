@@ -4,6 +4,7 @@ import Route from 'react-router/lib/Route';
 import IndexRoute from 'react-router/lib/IndexRoute';
 
 const browserHistory = Router.browserHistory;
+// import BaseRoutes from './baseRoutes.jsx';
 
 
 import App from '../components/app.jsx';
@@ -14,22 +15,20 @@ import AccordionLessons from '../components/accordionLessons.jsx';
 import BuyCds from '../components/buyCds.jsx';
 import Contact from '../components/contact.jsx';
 
-class Routes extends Component {
-
+class ClientRoutes extends Component {
 	render () {
 		return (
 			<Router history={browserHistory}>
-			  <Route path="/" component={App}>
-			    <IndexRoute component={Main} />
-			    <Route path="bio" component={Bio} />
-			    <Route path="/performances" component={UpcomingPerformances} />
-			    <Route path="lessons" component={AccordionLessons} />
-			    <Route path="cds" component={BuyCds} />
-			    <Route path="contact" component={Contact} />
-			  </Route>
+				<Route path="/" component={App}>
+				  <IndexRoute component={Main} />
+				  <Route path="bio" component={Bio} />
+				  <Route path="/performances" component={UpcomingPerformances} />
+				  <Route path="lessons" component={AccordionLessons} />
+				  <Route path="cds" component={BuyCds} />
+				  <Route path="contact" component={Contact} />
+				</Route>
 			</Router>
-		)		
+		)
 	}
 }
-
-export default Routes;
+export default ClientRoutes

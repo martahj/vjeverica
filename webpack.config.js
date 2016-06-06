@@ -2,7 +2,7 @@ const Path = require('path');
 
 module.exports = {
 	entry: [
-	    './routing.js',
+	    './client/rootApp.jsx',
 	],
 	output: {
 		filename: 'bundle.js',

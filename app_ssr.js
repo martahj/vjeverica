@@ -32,7 +32,8 @@ app.set('view engine', 'ejs');
 /*
   React Router Configuration
 */
-const routes = require('./routing/routes2.jsx').default;
+// const routes = require('./routing/serverRoutes.jsx').default;
+const routes = require('./routing/serverRoutes.jsx').default;
 let routerContextFactory = React.createFactory(RouterContext);
 
 
@@ -81,8 +82,8 @@ app.get('*', (req, res) => {
 	// let reactHtml = ReactDOMServer.renderToString(rootAppFactory({}));
 	// res.render('test', {reactOutput: fakeReactHtml})
 
-	const routes = require('./routing/routes2.jsx').default;
-	// console.log('routes', routes);
+	// const routes = require('./routing/serverRoutes.jsx').default;
+	console.log('routes', routes);
 	// console.log('req url', req.url);
 
 	match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
@@ -97,7 +98,7 @@ app.get('*', (req, res) => {
 
 			// let routerContextFactory = React.createFactory(RouterContext);
 			let reactOutput = ReactDOMServer.renderToString(routerContextFactory(renderProps));
-			res.render('test', {reactOutput});
+			res.render('index', {reactOutput});
 
 			// res.status(200).send(renderToString(<RouterContext {...renderProps} />))
 		} else {
