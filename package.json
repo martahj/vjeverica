@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node app_client",
     "ssr": "node app_ssr",
-    "test": "test",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive",
     "dev": "webpack-dev-server --progress --color",
     "serverBundle": "webpack --config webpack-server-config.js --watch"
   },
@@ -36,12 +36,15 @@
     "react-redux": "^4.4.5",
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
+    "redux-thunk": "^2.1.0",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1"
   },
   "devDependencies": {
     "babel-cli": "^6.9.0",
+    "chai": "^3.5.0",
+    "mocha": "^2.5.3",
     "webpack-dev-server": "^1.14.1"
   }
 }

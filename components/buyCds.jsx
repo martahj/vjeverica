@@ -6,7 +6,7 @@ class BuyCds extends Component {
 	render () {
 		return (
 			<div>
-			  <h3>Hello from BuyCds page!</h3>
+			  <h3></h3>
 			</div>
 		)
 	}

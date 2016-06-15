@@ -16,10 +16,12 @@ import BuyCds from '../components/buyCds.jsx';
 import Contact from '../components/contact.jsx';
 
 class ClientRoutes extends Component {
+
 	render () {
+		console.log('props in ClientRoutes', this.props);
 		return (
 			<Router history={browserHistory}>
-				<Route path="/" component={App}>
+				<Route path="/" component={App} s={this.props.s} >
 				  <IndexRoute component={Main} />
 				  <Route path="bio" component={Bio} />
 				  <Route path="/performances" component={UpcomingPerformances} />
@@ -32,3 +34,4 @@ class ClientRoutes extends Component {
 	}
 }
 export default ClientRoutes
+

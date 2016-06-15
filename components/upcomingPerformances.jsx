@@ -6,7 +6,7 @@ class UpcomingPerformances extends Component {
 	render () {
 		return (
 			<div>
-			  <h3>Hello from upcoming performances!</h3>
+			  <h3></h3>
 			</div>
 		)
 	}

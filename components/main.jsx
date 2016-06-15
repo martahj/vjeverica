@@ -7,11 +7,11 @@ import Events from './main/events.jsx';
 
 class Main extends Component {
     render() {
-
-    	// let allEvents = Calendar.getEvents();
-
+        let s = this.props.routes[0].s;
+        console.log('s in main', s);
         return (
             <div className="container">
+                <h3></h3>
                 <Introduction />
             </div>
         )
