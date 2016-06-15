@@ -1,0 +1,4 @@
+const grabState = () => {
+	//api request
+}
+
