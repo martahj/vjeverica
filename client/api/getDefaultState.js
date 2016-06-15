@@ -1,4 +1,4 @@
 const grabState = () => {
-	//api request
+	
 }
 
