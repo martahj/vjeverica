@@ -43,7 +43,7 @@ let routerContextFactory = React.createFactory(RouterContext);
 */
 
 app.use( (req, res, next) => {
-	console.log('testing', req.url)
+	// console.log('testing', req.url)
 	next();
 })
 
@@ -55,17 +55,17 @@ app.use( (req, res, next) => {
 
 
 app.get('/bundle.js', (req, res) => {
-	console.log('looking for bundle');
+	// console.log('looking for bundle');
 	res.sendFile(Path.resolve(distFolder, 'bundle.js'));
 })
 
 app.get('/styles.css', (req, res) => {
-	console.log('looking for styles');
+	// console.log('looking for styles');
 	res.sendFile(Path.resolve(clientFolder, 'styles', 'css', 'styles.css'));
 })
 
 app.get('/img/:img', (req, res) => {
-	console.log('looking for image', req.url);
+	// console.log('looking for image', req.url);
 	res.sendFile(Path.resolve(clientFolder, 'styles', 'img', req.params.img));
 })
 
@@ -75,16 +75,6 @@ app.get('/img/:img', (req, res) => {
   App
 */
 app.get('*', (req, res) => {
-
-	// let RootApp = require('./routing/routes.jsx').default;
-	// console.log('root app', RootApp);
-	// let rootAppFactory = React.createFactory(RootApp);
-	// let reactHtml = ReactDOMServer.renderToString(rootAppFactory({}));
-	// res.render('test', {reactOutput: fakeReactHtml})
-
-	// const routes = require('./routing/serverRoutes.jsx').default;
-	console.log('routes', routes);
-	// console.log('req url', req.url);
 
 	match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
 		console.log('in ssr route')

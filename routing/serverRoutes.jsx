@@ -11,10 +11,12 @@ import AccordionLessons from '../components/accordionLessons.jsx';
 import BuyCds from '../components/buyCds.jsx';
 import Contact from '../components/contact.jsx';
 
+import defaultState from '../store/defaultState';
 
+// console.log('default state in serverroutes', defaultState);
 export default(
 	<Router>
-		<Route path="/" component={App}>
+		<Route path="/" component={App} s={defaultState}>
 		  <IndexRoute component={Main} />
 		  <Route path="bio" component={Bio} />
 		  <Route path="/performances" component={UpcomingPerformances} />

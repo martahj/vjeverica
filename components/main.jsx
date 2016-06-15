@@ -7,11 +7,10 @@ import Events from './main/events.jsx';
 
 class Main extends Component {
     render() {
-        let s = this.props.routes[0].s;
-        console.log('s in main', s);
+        // console.log('props in main', this.props);
+        let s = this.props.routes[0].s || this.props.routes[1].s
         return (
             <div className="container">
-                <h3></h3>
                 <Introduction />
             </div>
         )

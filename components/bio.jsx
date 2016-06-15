@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 class Bio extends Component {
 
 	render () {
-		let s = this.props.routes[0].s;
+		let s = this.props.routes[0].s || this.props.routes[1].s
 		console.log('s in bio', s);
 
 		return (
