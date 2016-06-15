@@ -6,7 +6,10 @@
   "scripts": {
     "start": "node app_client",
     "ssr": "node app_ssr",
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive",
+    "test": "bash ./test/run.sh",
+    "test2": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive",
+    "testcli": "mocha testing/helpers/browser testing/client/*.js",
+    "testcli2": "mocha testing/helpers/browser.js testing/client/*.js",
     "dev": "webpack-dev-server --progress --color",
     "serverBundle": "webpack --config webpack-server-config.js --watch"
   },
@@ -44,7 +47,12 @@
   "devDependencies": {
     "babel-cli": "^6.9.0",
     "chai": "^3.5.0",
+    "enzyme": "^2.3.0",
+    "jsdom": "^9.2.1",
     "mocha": "^2.5.3",
+    "react-addons-test-utils": "^15.1.0",
+    "supertest": "^1.2.0",
+    "supertest-as-promised": "^3.1.0",
     "webpack-dev-server": "^1.14.1"
   }
 }

@@ -25,8 +25,8 @@ const clientFolder = Path.resolve(__dirname, 'client');
   Express Configuration
 */
 
-const app = Express();
-app.set('view engine', 'ejs');
+const appRoutes = Express();
+// appRoutes.set('view engine', 'ejs');
 
 
 
@@ -34,7 +34,7 @@ app.set('view engine', 'ejs');
   Static files
 */
 
-app.use(Express.static(clientFolder));
+appRoutes.use(Express.static(clientFolder));
 
 
 
@@ -42,7 +42,7 @@ app.use(Express.static(clientFolder));
   Middleware
 */
 
-app.use( (req, res, next) => {
+appRoutes.use( (req, res, next) => {
 	console.log('testing', req.url)
 	next();
 })
@@ -53,13 +53,13 @@ app.use( (req, res, next) => {
   Routes
 */
 
-app.get('/bundle.js', (req, res) => {
+appRoutes.get('/bundle.js', (req, res) => {
 	console.log('looking for bundle');
 	res.sendFile(Path.resolve(distFolder, 'bundle.js'));
 })
 
 
-app.get('*', (req, res) => {
+appRoutes.get('*', (req, res) => {
 	res.sendFile(Path.resolve(clientFolder, 'index.html'))
 })
 
@@ -67,9 +67,15 @@ app.get('*', (req, res) => {
 
 
 if (process.env.NODE_ENV !== 'test') {
+
+	let app = Express();
+	app.use(BodyParser.json())
+	app.use('/', appRoutes);
+
 	let port = process.env.port || 4000;
 	app.listen(port);
 	console.log('Listening on port', port);
+	
 } else {
-	module.exports = app;
+	module.exports = appRoutes;
 }

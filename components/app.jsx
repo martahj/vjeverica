@@ -43,13 +43,8 @@ import Brandbar from './Brandbar.jsx';
 class App extends Component {
 
 	render() {
-		let s = this.props.routes[0].s || this.props.route.s;
-		// console.log('s in app', s);
-		// console.log('app props route s', this.props.route.s);
-		// console.log('app props', this.props);
-		// let s = Array.isArray(this.props.routes) ? this.props.routes[0].s : this.props.routes;
-		// console.log('app s', s);
-		// console.log('props in app', this.props);
+		// let s = this.props.routes[0].s || this.props.route.s;
+
 		return (
 			<div>
 			  <Brandbar />

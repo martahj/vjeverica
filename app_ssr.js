@@ -25,8 +25,9 @@ const clientFolder = Path.resolve(__dirname, 'client');
 /*
   Express Configuration
 */
-const app = Express();
-app.set('view engine', 'ejs');
+const appRoutes = Express.Router();
+console.log('app routes', appRoutes);
+// appRoutes.set('view engine', 'ejs');
 
 
 /*
@@ -42,10 +43,10 @@ let routerContextFactory = React.createFactory(RouterContext);
   Middleware
 */
 
-app.use( (req, res, next) => {
-	// console.log('testing', req.url)
-	next();
-})
+// appRoutes.use( (req, res, next) => {
+// 	// console.log('testing', req.url)
+// 	next();
+// })
 
 
 
@@ -54,17 +55,17 @@ app.use( (req, res, next) => {
 */
 
 
-app.get('/bundle.js', (req, res) => {
+appRoutes.get('/bundle.js', (req, res) => {
 	// console.log('looking for bundle');
 	res.sendFile(Path.resolve(distFolder, 'bundle.js'));
 })
 
-app.get('/styles.css', (req, res) => {
+appRoutes.get('/styles.css', (req, res) => {
 	// console.log('looking for styles');
 	res.sendFile(Path.resolve(clientFolder, 'styles', 'css', 'styles.css'));
 })
 
-app.get('/img/:img', (req, res) => {
+appRoutes.get('/img/:img', (req, res) => {
 	// console.log('looking for image', req.url);
 	res.sendFile(Path.resolve(clientFolder, 'styles', 'img', req.params.img));
 })
@@ -72,9 +73,9 @@ app.get('/img/:img', (req, res) => {
 
 
 /*
-  App
+  appRoutes
 */
-app.get('*', (req, res) => {
+appRoutes.get('*', (req, res) => {
 
 	match({routes, location: req.url}, (error, redirectLocation, renderProps) => {
 		console.log('in ssr route')
@@ -88,7 +89,7 @@ app.get('*', (req, res) => {
 
 			// let routerContextFactory = React.createFactory(RouterContext);
 			let reactOutput = ReactDOMServer.renderToString(routerContextFactory(renderProps));
-			res.render('index', {reactOutput});
+			res.render('index.ejs', {reactOutput});
 
 			// res.status(200).send(renderToString(<RouterContext {...renderProps} />))
 		} else {
@@ -99,9 +100,13 @@ app.get('*', (req, res) => {
 })
 
 if (process.env.NODE_ENV !== 'test') {
+	let app = Express();
+	app.use(BodyParser.json())
+	app.use('/', appRoutes);
+
 	let port = process.env.port || 4000;
 	app.listen(port);
 	console.log('Listening on port', port);
 } else {
-	module.exports = app;
+	module.exports = appRoutes;
 }
