@@ -1,3 +1,20 @@
+#logs
+logs
+logfile
+*.log
 npm-debug.log
-node_modules
-dist
+
+#node modules
+node_modules/
+
+#bundle
+dist/
+
+#database
+db/
+
+#config
+config.js
+
+#seeds
+server/seeds/

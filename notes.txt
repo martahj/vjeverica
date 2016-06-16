@@ -1,0 +1,10 @@
+To start postgres: postgres -D db/
+
+To initialize the database: createdb vjev_dev
+To look at db: psql vjev_dev
+To stop looking at db: CTRL + d
+
+
+To initialize the test database:
+
+To start db:

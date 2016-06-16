@@ -173,10 +173,11 @@ const fakeDb = {
 	},
 	lessons: {
 		intro: 'blah',
-		pricingNotes: 'It is recommended that elementary through high school children take weekly lessons that are 25 minutes in length.' 
+		pricingNotes: 'It is recommended that elementary through high school children take weekly lessons that are 25 minutes in length.',
+		policies: 'Bring yo own accordion'
 	},
 	lessonPricing: [
-	  {time: 55, price: 35.00, }
+	  {time: 55, price: 35.00, paypalLink: 'paypal'},
 	]
 	contact: {
 		email: 'hi',
