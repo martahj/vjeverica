@@ -71,7 +71,7 @@ const fakeDb = {
 	  	featured: false,
 	  	location: '1115 East 11th St., Austin',
 	  	description: 'Enjoy romantic and fun European favorites from Italy, France, and other Mediterranean lands at this organic, trendy, and very delicious Bistro.'
-	  },
+	  }
 	  // { id: 2,
 	  // 	title: "Spain Tour",
 	  // 	startDate: '2016-08-03',
