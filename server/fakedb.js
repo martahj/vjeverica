@@ -36,7 +36,7 @@ const fakeDb = {
 	  	startDate: '2016-08-03',
 	  	startTime: null,
 	  	endTime: null,
-	  	endDate: '2016-08-03'
+	  	endDate: '2016-08-03',
 	  	allDay: true,
 	  	featured: false,
 	  	location: null,

@@ -5,8 +5,8 @@ const env = process.env.NODE_ENV || 'development'
 
 console.log('Current node environment is', env)
 
-var db = require('knex')(config[env])
-var Promise = require('bluebird')
+const db = require('knex')(config[env])
+const Promise = require('bluebird')
 
 module.exports = db
 db.migrate.latest([config])
