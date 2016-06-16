@@ -9,7 +9,7 @@ const Url = require('url');
 const ReactRouter = require('react-router');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-
+const db = require('./server/db');
 
 
 /*

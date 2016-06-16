@@ -1,0 +1,44 @@
+****
+To start postgres: 
+****
+$postgres -D db/
+
+
+
+
+****
+To initialize the database: 
+****
+$createdb vjev_dev
+
+
+
+
+****
+To look at db: 
+****
+$psql [db_name]
+
+
+
+
+****
+To stop looking at db: 
+****
+CTRL + d
+
+
+
+
+****
+After changing the database:
+****
+$dropdb vjev_dev
+$createdb vjev_dev
+$npm start || $NODE_ENV=test node app_client   // this will run migrations; can quit immediately
+
+
+
+knex --env development seed:run
+
+

@@ -4,7 +4,7 @@ process.env.NODE_ENV = 'test';
 
 const helper = {};
 
-helper.db = require('../../server/fakedb.js');
+helper.db = require('../../server/db.js');
 helper.request = require('supertest-as-promised');
 helper.expect = require('chai').expect;
 
