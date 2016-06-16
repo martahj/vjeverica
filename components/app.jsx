@@ -6,7 +6,7 @@ import {RouteHandler} from 'react-router';
 // require('../client/styles/css/styles.css');
 
 import Navbar from './navbar.jsx';
-import Brandbar from './Brandbar.jsx';
+import Brandbar from './brandbar.jsx';
 
 // const mapStateToProps = (state) => {
 //   return {
