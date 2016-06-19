@@ -43,7 +43,7 @@ appRoutes.use(Express.static(clientFolder));
 */
 
 appRoutes.use( (req, res, next) => {
-	console.log('testing', req.url)
+	// console.log('testing', req.url)
 	next();
 })
 
