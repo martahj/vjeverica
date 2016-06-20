@@ -34,16 +34,19 @@ helper.createApp = (loader) => {
 
 
 helper.allPropertiesMatch = (original, stored) => {
+	// console.log('all properties match?', original, stored);
 	return Object.keys(original).reduce( (allMatching, key) => {
-		return allMatching && propertyMatches(original[key], stored[key]);
+		return allMatching && helper.propertyMatches(original[key], stored[key]);
 	}, true)
 }
 
 helper.propertyMatches = (originalProperty, storedProperty) => {
+	// console.log('comparing', originalProperty, 'to', storedProperty)
 	return originalProperty === undefined ? storedProperty === null : originalProperty === storedProperty;
 }
 
 helper.noDifference = (obj1, obj2) => {
+	// console.log('helper no difference', obj1, obj2);
 	return helper.allPropertiesMatch(obj1, obj2) && Object.keys(obj1).length === Object.keys(obj2).length;
 }
 

@@ -23,7 +23,7 @@ xdescribe('******* User model ******* ', function() {
 	}
 
 
-	it('creates users and searches for all of them', function() {
+	xit('creates users and searches for all of them', function() {
 		return User.createUser(user1)
 		  .then( () => User.createUser(user2) )
 		  .then( () => User.findAll() )
@@ -34,7 +34,7 @@ xdescribe('******* User model ******* ', function() {
 		  })
 	})
 
-	it('creates the right users and encrypts passwords', function() {
+	xit('creates the right users and encrypts passwords', function() {
 		return User.findById(1)
 		  .then( dbUser1 => {
 		  	expect(dbUser1).to.be.an('object');

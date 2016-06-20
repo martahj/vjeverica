@@ -6,66 +6,78 @@ const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'))
 const UserHelpers = {};
 module.exports = UserHelpers;
 
+/*
+  Methods called in User model
+*/
+
 UserHelpers.encryptPassword = (userAttrs) => {
 	return UserHelpers.getHashedPassword(userAttrs.password)
-	  .then( hash => {
-	  	userAttrs.password = hash;
-	  	return userAttrs;
-	  })
+	  .then( hash => Object.assign({}, userAttrs, {password: hash}) )
 }
 
-UserHelpers.getHashedPassword = (password) => {
-	return bcrypt.genSaltAsync(10)
-	.then( (salt) => bcrypt.hashAsync(password, salt, null) )
-};
+UserHelpers.passwordMatches = (enteredPw, storedHash) => {
+	return bcrypt.compareAsync(enteredPw, storedHash)
+}
+
+UserHelpers.trimEmailAndValidate = (userAttrs) => {
+	return UserHelpers.trimEmail(userAttrs)
+	  .then( userAttrs => UserHelpers.validateEmail(userAttrs) )
+}
+
+
+
+/*
+  no need to use these directly
+*/
+
 
 UserHelpers.trimEmail = (userAttrs) => {
 	return new Promise( (resolve, reject) => {
 		let trimmed = UserHelpers.getTrimmedEmail(userAttrs.email);
 		resolve(trimmed);
 	})
-	.then( trimmed => {
-		userAttrs.email = trimmed;
-		return userAttrs;
+	.then( trimmed => Object.assign({}, userAttrs, {email: trimmed}) )
+}
+
+
+UserHelpers.validateEmail = (userAttrs) => {
+	return new Promise( (resolve, reject) => {
+		if (UserHelpers.isValidEmail(userAttrs.email)) {
+			resolve()
+		} else {
+			reject()
+		}
+	})
+	.then( () => userAttrs )
+	.catch( (err) => {
+		console.log('error in validateEmail', err);
+		throw new Error(userAttrs.email + ' is an invalid email address');
 	})
 }
+
+
+UserHelpers.getHashedPassword = (password) => {
+	return bcrypt.genSaltAsync(10)
+	.then( (salt) => bcrypt.hashAsync(password, salt, null) )
+};
 
 UserHelpers.getTrimmedEmail = (email) => {
 	return email.trim();
 }
 
+UserHelpers.isValidEmail = (emailAddress) => {
+	return UserHelpers.okAt(emailAddress) && UserHelpers.isAtWebsite(emailAddress);
+}
 
-// function checkForValidEmail(userAttrs) {
-// 	return new Promise( (resolve, reject) => {
-// 		if (isValidEmail(userAttrs.email)) {
-// 			resolve()
-// 		} else {
-// 			reject()
-// 		}
-// 	})
-// 	.then( () => {console.log('valid email address!'); return;})
-// 	.catch( (err) => {
-// 		throw new Error(userAttrs.email + ' is an invalid email address');
-// 	})
-// }
-
-
-// UserHelpers.isValidEmail(emailAddress) {
-// 	console.log('ehcking if', emailAddress, 'is a valid email address');
-// 	return containsOneAt(emailAddress) && isAtWebsite(emailAddress);
-// }
-
-UserHelpers.okAt(emailAddress) {
+UserHelpers.okAt = (emailAddress) => {
 	let parts = emailAddress.split('@');
-	return parts.length === 2 && parts[0].length && parts[1].length;
+	return parts.length === 2 && parts[0].length > 0 && parts[1].length > 0;
 }
 
-// UserHelpers.isAtWebsite(emailAddress) {
-// 	let website = emailAddress.split('@')[1];
-// 	let websiteParts = website.split('.');
-// 	return websiteParts.length === 2 && parts[0].length && parts[1].length;
-// }
-
-UserHelpers.passwordMatches(enteredPw, storedHash) {
-	return bcrypt.compareAsync(enteredPw, storedHash)
+UserHelpers.isAtWebsite = (emailAddress) => {
+	let website = emailAddress.split('@')[1];
+	let websiteParts = website.split('.');
+	return websiteParts.length === 2 && websiteParts[0].length > 0 && websiteParts[1].length > 0;
 }
+
+
