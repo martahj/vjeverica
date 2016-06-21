@@ -5,7 +5,7 @@ const expect = helper.expect;
 const UserHelpers = helper.UserHelpers;
 
 
-xdescribe('******* User model helpers ******* ', function() {
+describe('******* User model helpers ******* ', function() {
 
 	it('encrypts a password', function() {
 		let originalPw = 'passwordd';
