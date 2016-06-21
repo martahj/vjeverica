@@ -10,18 +10,30 @@ module.exports = UserHelpers;
   Methods called in User model
 */
 
+//changes the password to an encrypted password
 UserHelpers.encryptPassword = (userAttrs) => {
 	return UserHelpers.getHashedPassword(userAttrs.password)
 	  .then( hash => Object.assign({}, userAttrs, {password: hash}) )
 }
 
+//returns a boolean representing whether or not the password matches the stored one
 UserHelpers.passwordMatches = (enteredPw, storedHash) => {
 	return bcrypt.compareAsync(enteredPw, storedHash)
 }
 
+//trims the email and then validates it
+//if no problems, returns the updated object
 UserHelpers.trimEmailAndValidate = (userAttrs) => {
 	return UserHelpers.trimEmail(userAttrs)
 	  .then( userAttrs => UserHelpers.validateEmail(userAttrs) )
+}
+
+//sets admin to false if no admin attribute is provided
+UserHelpers.ensureAdmin = (userAttrs) => {
+	return new Promise( (resolve, reject) => {
+		let withAdmin = Object.assign({}, {admin: false}, userAttrs);
+		resolve(withAdmin)
+	})
 }
 
 

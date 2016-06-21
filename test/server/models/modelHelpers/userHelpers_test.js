@@ -5,7 +5,7 @@ const expect = helper.expect;
 const UserHelpers = helper.UserHelpers;
 
 
-describe('******* User model helpers ******* ', function() {
+xdescribe('******* User model helpers ******* ', function() {
 
 	it('encrypts a password', function() {
 		let originalPw = 'passwordd';
@@ -49,8 +49,6 @@ describe('******* User model helpers ******* ', function() {
 
 		return UserHelpers.encryptPassword(user1)
 		  .then( hashedUser1 => {
-		  	console.log('user1', user1);
-		  	console.log('hashed', hashedUser1);
 		  	expect(hashedUser1).to.be.an('object');
 		  	expect(hashedUser1).to.have.all.keys('admin', 'email', 'password');
 
@@ -176,6 +174,18 @@ describe('******* User model helpers ******* ', function() {
 		  	expect(emailMatches).to.be.false;
 		  	expect( trimmedUser1.email.length - user1.email.length ).to.equal(-2);
 		  	expect( trimmedUser1.email).to.equal(user1.email.trim() )
+		  })
+	})
+
+	it('sets admin to false if no admin is given', function() {
+		let user = {
+			email: 'blurgeddy',
+			password: 'idontmatter'
+		}
+
+		return UserHelpers.ensureAdmin(user)
+		  .then( (userObj) => {
+		  	expect(userObj.admin === false).to.be.true;
 		  })
 	})
 })

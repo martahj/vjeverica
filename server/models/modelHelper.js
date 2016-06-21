@@ -36,20 +36,25 @@ modelHelper.createModel = (tableName, attrs) => {
 	};
 
 	//newItemAttrs should be an object with keys corresponding to the attributes
-	Model.create = (newItemAttrs) => {
-		let stillNeedAttr = lacksRequired(newItemAttrs)
+	Model.create = function(newItemAttrs) {
+		// console.log('this', this);
+		let stillNeedAttr = this.lacksRequired(newItemAttrs)
 		if (stillNeedAttr !== undefined) {
-			let description = 'Error inserting into table ' + this.table;
-			let err = new Error('Attribute', stillNeedAttr, 'is required');
-			this.reportError(description, err);
+			this.throwRequiredError(stillNeedAttr)
 		} else {
 			return db(this.table).insert(newItemAttrs)
 			  .then( (result) => this.reportSuccess('Success inserting into ' + this.table, result))
 		}
 	};
 
+	Model.throwRequiredError = function(absentProperty) {
+		let description = 'Error inserting into table ' + this.table;
+		let err = new Error(absentProperty + ' is a required field');
+		this.reportError(description, err);
+	}
+
 	//returns undefined or the name of the required but lacking attribute
-	Model.lacksRequired = (newItemAttrs) => {
+	Model.lacksRequired = function(newItemAttrs) {
 		let needsThis = (attr) => newItemAttrs[attr] === undefined || newItemAttrs[attr] === null;
 
 		return this.required.reduce( (lacks, current) => {
@@ -57,7 +62,7 @@ modelHelper.createModel = (tableName, attrs) => {
 		}, undefined);
 	};
 
-	Model.getAll = () => {
+	Model.getAll = function() {
 		let successDescription = 'Success retrieving all entries from ' + this.table;
 		let failureDescripion = 'Failure retrieving all entries from ' + this.table;
 		return db.select('*').from(this.table)
@@ -65,7 +70,7 @@ modelHelper.createModel = (tableName, attrs) => {
 		  .catch( err => this.reportFailure(failureDescripion, result) )
 	};
 
-	Model.findById = (id) => {
+	Model.findById = function(id) {
 		return this.findByAttribute(id, 'id')
 		  .then( matching => {
 		  	if (matching.length > 1) {
@@ -76,7 +81,7 @@ modelHelper.createModel = (tableName, attrs) => {
 		  })
 	};
 
-	Model.findByAttribute = (searchTerm, attribute) => {
+	Model.findByAttribute = function(searchTerm, attribute) {
 		let successDescription = 'Success searching for entries in ' + this.table + ' where ' + searchTerm + '=' + attribute;
 		let failureDescripion = 'Error searching for entries in ' + this.table + ' where ' + searchTerm + '=' + attribute;
 
