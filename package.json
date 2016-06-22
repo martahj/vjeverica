@@ -12,7 +12,9 @@
     "testcli": "mocha testing/helpers/browser testing/client/*.js",
     "testcli2": "mocha testing/helpers/browser.js testing/client/*.js",
     "dev": "webpack-dev-server --progress --color",
-    "serverBundle": "webpack --config webpack-server-config.js --watch"
+    "serverBundle": "webpack --config webpack-server-config.js --watch",
+    "migrate": "knex migrate:latest",
+    "migrate_test": "knex migrate:latest --env test"
   },
   "author": "",
   "license": "ISC",
