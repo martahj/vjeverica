@@ -17,5 +17,24 @@ db.deleteEverything = () => {
 		return Promise.reject()
 	}
 
-	//delete everything
+	return deleteTable('contactInfo')
+	  .then( () => deleteTable('lessons') )
+	  .then( () => deleteTable('lessonsText') )
+	  .then( () => deleteTable('cds_artists') )
+	  .then( () => deleteTable('artists') )
+	  .then( () => deleteTable('cds_songs') )
+	  .then( () => deleteTable('songs') )
+	  .then( () => deleteTable('cds') )
+	  .then( () => deleteTable('bio') )
+	  .then( () => deleteTable('eventNotes') )
+	  .then( () => deleteTable('events') )
+	  .then( () => deleteTable('users') )	  
+}
+
+function deleteTable(tablename) {
+	return db(tablename).delete()
+	  .then( (numberDeleted) => {
+	  	console.log('deleted', numberDeleted, 'records from', tablename);
+	  	return;
+	  })
 }

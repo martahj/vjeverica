@@ -11,6 +11,9 @@ helper.expect = require('chai').expect;
 helper.ssrRoutes = require('../../app_ssr.js');
 helper.clientRoutes = require('../../app_client.js');
 
+helper.User = require('../../server/models/user.js');
+helper.UserHelpers = require('../../server/models/modelHelpers/userHelpers.js');
+
 let express = require('express');
 let bodyParser = require('body-parser');
 
@@ -27,6 +30,26 @@ helper.createApp = (loader) => {
 	}
 
 	return app;
+};
+
+
+helper.allPropertiesMatch = (original, stored) => {
+	// console.log('all properties match?', original, stored);
+	return Object.keys(original).reduce( (allMatching, key) => {
+		return allMatching && helper.propertyMatches(original[key], stored[key]);
+	}, true)
 }
+
+helper.propertyMatches = (originalProperty, storedProperty) => {
+	// console.log('comparing', originalProperty, 'to', storedProperty)
+	return originalProperty === undefined ? storedProperty === null : originalProperty === storedProperty;
+}
+
+helper.noDifference = (obj1, obj2) => {
+	// console.log('helper no difference', obj1, obj2);
+	return helper.allPropertiesMatch(obj1, obj2) && Object.keys(obj1).length === Object.keys(obj2).length;
+}
+
+// helper.populateDb = require('./populateDb');
 
 module.exports = helper;
