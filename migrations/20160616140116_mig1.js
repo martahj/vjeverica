@@ -2,15 +2,16 @@
 exports.up = function(knex, Promise) {
 
   return Promise.all([
-  	knex.schema.createTable('users', function(table) {
+  	knex.schema.createTableIfNotExists('users', function(table) {
   	  table.increments('id').primary();
   	  table.boolean('admin');
-  	  table.string('email');
+  	  table.string('email')
+           .unique();
   	  table.string('password');
   	  table.timestamps();
   	}),
 
-  	knex.schema.createTable('events', function(table) {
+  	knex.schema.createTableIfNotExists('events', function(table) {
   		table.increments('id').primary();
   		table.string('title');
   		table.string('image');
@@ -28,7 +29,7 @@ exports.up = function(knex, Promise) {
   		table.timestamps();
   	}),
 
-  	knex.schema.createTable('eventNotes', function(table) {
+  	knex.schema.createTableIfNotExists('eventNotes', function(table) {
   		table.increments('id').primary();
   		table.integer('event_id')
   		     .references('id')
@@ -40,14 +41,14 @@ exports.up = function(knex, Promise) {
   		table.string('linkDescription');
   	}),
 
-  	knex.schema.createTable('bio', function(table) {
+  	knex.schema.createTableIfNotExists('bio', function(table) {
   		table.increments('id').primary();
   		table.string('text');
   		table.integer('order');
   		table.timestamps();
   	}),
 
-  	knex.schema.createTable('cds', function(table) {
+  	knex.schema.createTableIfNotExists('cds', function(table) {
   		table.increments('id').primary();
   		table.string('name');
   		table.string('image');
@@ -58,7 +59,7 @@ exports.up = function(knex, Promise) {
   		table.timestamps();
   	}),
 
-  	knex.schema.createTable('songs', function(table) {
+  	knex.schema.createTableIfNotExists('songs', function(table) {
   		table.increments('id').primary();
   		table.string('name');
   		table.string('origin');
@@ -67,7 +68,7 @@ exports.up = function(knex, Promise) {
   		table.timestamps();
   	}),
 
-  	knex.schema.createTable('cds_songs', function(table) {
+  	knex.schema.createTableIfNotExists('cds_songs', function(table) {
   		table.increments('id').primary();
   		table.integer('cd_id')
   		     .references('id')
@@ -79,13 +80,13 @@ exports.up = function(knex, Promise) {
   		table.timestamps();
   	}),
 
-  	knex.schema.createTable('artists', function(table) {
+  	knex.schema.createTableIfNotExists('artists', function(table) {
   		table.increments('id').primary();
   		table.string('name');
   		table.timestamps();
   	}),
 
-  	knex.schema.createTable('cds_artists', function(table) {
+  	knex.schema.createTableIfNotExists('cds_artists', function(table) {
   		table.increments('id').primary();
   		table.integer('cd_id')
   		     .references('id')
@@ -98,20 +99,20 @@ exports.up = function(knex, Promise) {
   		table.timestamps();
   	}),
 
-  	knex.schema.createTable('lessonsText', function(table) {
+  	knex.schema.createTableIfNotExists('lessonsText', function(table) {
   		table.increments('id').primary();
   		table.string('title');
   		table.string('text');
   	}),
 
-  	knex.schema.createTable('lessons', function(table) {
+  	knex.schema.createTableIfNotExists('lessons', function(table) {
   		table.increments('id').primary();
   		table.integer('minutes');
   		table.decimal('price'); //decimals default to scale of 2
   		table.string('url');
   	}),
 
-  	knex.schema.createTable('contactInfo', function(table) {
+  	knex.schema.createTableIfNotExists('contactInfo', function(table) {
   		table.increments('id').primary();
   		table.string('type');
   		table.string('value');
