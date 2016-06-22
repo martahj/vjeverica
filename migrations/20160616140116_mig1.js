@@ -11,6 +11,12 @@ exports.up = function(knex, Promise) {
   	  table.timestamps();
   	}),
 
+    knex.schema.createTableIfNotExists('tokens', function(table) {
+      table.increments('id').primary();
+      table.string('token');
+      table.timestamps();
+    }),
+
   	knex.schema.createTableIfNotExists('events', function(table) {
   		table.increments('id').primary();
   		table.string('title');
@@ -135,6 +141,7 @@ exports.down = function(knex, Promise) {
   	knex.schema.dropTable('bio'),
   	knex.schema.dropTable('eventNotes'),
   	knex.schema.dropTable('events'),
+    knex.schema.dropTable('tokens'),
   	knex.schema.dropTable('users')
   ])
 };

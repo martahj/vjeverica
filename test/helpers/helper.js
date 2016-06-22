@@ -13,6 +13,7 @@ helper.clientRoutes = require('../../app_client.js');
 
 helper.User = require('../../server/models/user.js');
 helper.UserHelpers = require('../../server/models/modelHelpers/userHelpers.js');
+helper.Token = require('../../server/models/token.js');
 
 let express = require('express');
 let bodyParser = require('body-parser');

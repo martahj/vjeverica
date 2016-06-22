@@ -1,5 +1,4 @@
 const Promise = require('bluebird');
-// const bcrypt = Promise.promisifyAll(require('bcrypt-nodejs'))
 
 const db = require('../db.js');
 const ModelHelper = require('./modelHelper');
