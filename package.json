@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engine": "node 6",
   "scripts": {
     "start": "node app_client",
     "ssr": "node app_ssr",

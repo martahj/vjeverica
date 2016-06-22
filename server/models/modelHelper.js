@@ -67,7 +67,7 @@ modelHelper.createModel = (tableName, attrs) => {
 		let failureDescripion = 'Failure retrieving all entries from ' + this.table;
 		return db.select('*').from(this.table)
 		  .then( result => this.reportSuccess(successDescription, result) )
-		  .catch( err => this.reportFailure(failureDescripion, result) )
+		  .catch( err => this.reportError(failureDescripion, result) )
 	};
 
 	Model.findById = function(id) {
@@ -90,8 +90,26 @@ modelHelper.createModel = (tableName, attrs) => {
 
 		return db.select('*').from(this.table).where(searchObject)
 		  .then( result => this.reportSuccess(successDescription, result) )
-		  .catch( err => this.reportFailure(failureDescripion, err) )
+		  .catch( err => this.reportError(failureDescripion, err) )
 	};
+
+	Model.update = function(selectorAttributes, updateAttributes) {
+		let successDescription = 'Success updating entries in ' + this.table + ' where ' + selectorAttributes;
+		let failureDescripion = 'Failure updating entries in ' + this.table + ' where ' + selectorAttributes;
+
+		return db(this.table).where(selectorAttributes).update(updateAttributes)
+		  .then( result => this.reportSuccess(successDescription, result) )
+		  .catch( err => this.reportError(failureDescripion, err) )
+	};
+
+	Model.delete = function(id) {
+		let successDescription = 'Success deleting entry with id ' + id + ' from ' + this.table;
+		let failureDescripion = 'Failure deleting entry with id ' + id + ' from ' + this.table;
+		
+		return db(this.table).where({id}).del()
+		  .then( result => this.reportSuccess(successDescription, result) )
+		  .catch( err => this.reportError(failureDescripion, err) )
+	}
 
 
 

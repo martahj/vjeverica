@@ -10,11 +10,17 @@ module.exports = UserHelpers;
   Methods called in User model
 */
 
-//changes the password to an encrypted password
+//changes the password to an encrypted passw
 UserHelpers.encryptPassword = (userAttrs) => {
 	return UserHelpers.getHashedPassword(userAttrs.password)
 	  .then( hash => Object.assign({}, userAttrs, {password: hash}) )
 }
+
+//just returns the encrypted password
+UserHelpers.getHashedPassword = (password) => {
+	return bcrypt.genSaltAsync(10)
+	.then( (salt) => bcrypt.hashAsync(password, salt, null) )
+};
 
 //returns a boolean representing whether or not the password matches the stored one
 UserHelpers.passwordMatches = (enteredPw, storedHash) => {
@@ -67,11 +73,6 @@ UserHelpers.validateEmail = (userAttrs) => {
 	})
 }
 
-
-UserHelpers.getHashedPassword = (password) => {
-	return bcrypt.genSaltAsync(10)
-	.then( (salt) => bcrypt.hashAsync(password, salt, null) )
-};
 
 UserHelpers.getTrimmedEmail = (email) => {
 	return email.trim();
