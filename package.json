@@ -14,7 +14,7 @@
     "dev": "webpack-dev-server --progress --color",
     "serverBundle": "webpack --config webpack-server-config.js --watch",
     "migrate": "knex migrate:latest",
-    "migrate_test": "knex migrate:latest --env test"
+    "migrate_test": "createdb vjev_test && knex migrate:latest --env test"
   },
   "author": "",
   "license": "ISC",
