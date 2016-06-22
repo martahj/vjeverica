@@ -16,6 +16,7 @@ describe('******* Token model ******* ', function() {
 	it('generates a token', function() {
 		return Token.generateToken(user1.email)
 		  .then( token => {
+		  	token1 = token;
 		  	expect(token).to.be.a('string');
 		  	expect(token.length > user1.email.length).to.be.true;
 		  })
@@ -27,11 +28,13 @@ describe('******* Token model ******* ', function() {
 		  	expect(tokenData).to.have.all.keys(['email', 'iat', 'exp'])
 		  	expect(tokenData.email).to.equal(user1.email);
 
-		  	setTimeout(function() {return}, 1000)
+		  	return
 		  })
+		  .then( () => helper.promisedWait(1000) )
 		  .then( () => Token.decodeToken(token1) )
 		  .then( (tokenData) => {
-		  	expect(tokenData).to.be.false;
+		  	console.log('token data should be null', tokenData);
+		  	expect(tokenData).to.equal(null);
 		  })
 	})
 
