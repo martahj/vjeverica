@@ -1,6 +1,6 @@
 "use strict"
 
-let defaultState = {
+const defaultState = {
 	calendarItems: {
 		items: []
 	},
