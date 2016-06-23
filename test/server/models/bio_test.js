@@ -147,8 +147,6 @@ describe('******* Bio model ******* ', function() {
 		  	expect(bios).to.be.an('array');
 		  	expect(bios).to.have.length(5);
 
-		  	console.log('bios so far', bios);
-
 		  	expect(helper.propertyMatches(bio1.text, bios[0].text)).to.be.true;
 		  	expect(helper.propertyMatches(bio2.text, bios[1].text)).to.be.true;
 		  	expect(helper.propertyMatches(bio5.text, bios[2].text)).to.be.true;
