@@ -28,6 +28,7 @@ db.deleteEverything = () => {
 	  .then( () => deleteTable('bio') )
 	  .then( () => deleteTable('eventNotes') )
 	  .then( () => deleteTable('events') )
+	  .then( () => deleteTable('tokens') )
 	  .then( () => deleteTable('users') )	  
 }
 

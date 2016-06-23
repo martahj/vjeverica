@@ -7,14 +7,17 @@
   "scripts": {
     "start": "node app_client",
     "ssr": "node app_ssr",
+    "restartdb_dev": "dropdb vjev_dev && npm run makedb_dev && npm run migrate_dev",
+    "restartdb_test": "dropdb vjev_test && npm run makedb_test && npm run migrate_test",
+    "makedb_dev": "createdb vjev_dev",
+    "makedb_test": "createdb vjev_test",
+    "migrate_dev": "knex migrate:latest",
+    "migrate_test": "knex migrate:latest --env test",
+    "test_new_schema": "npm run restartdb_test && npm test",
     "test": "bash ./test/run.sh",
     "test2": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive",
     "testcli": "mocha testing/helpers/browser testing/client/*.js",
-    "testcli2": "mocha testing/helpers/browser.js testing/client/*.js",
-    "dev": "webpack-dev-server --progress --color",
-    "serverBundle": "webpack --config webpack-server-config.js --watch",
-    "migrate": "knex migrate:latest",
-    "migrate_test": "createdb vjev_test && knex migrate:latest --env test"
+    "testcli2": "mocha testing/helpers/browser.js testing/client/*.js"
   },
   "author": "",
   "license": "ISC",

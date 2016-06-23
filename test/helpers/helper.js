@@ -1,6 +1,7 @@
 "use strict"
 
 process.env.NODE_ENV = 'test';
+const Promise = require('bluebird');
 
 const helper = {};
 
@@ -13,6 +14,7 @@ helper.clientRoutes = require('../../app_client.js');
 
 helper.User = require('../../server/models/user.js');
 helper.UserHelpers = require('../../server/models/modelHelpers/userHelpers.js');
+helper.Token = require('../../server/models/token.js');
 
 let express = require('express');
 let bodyParser = require('body-parser');
@@ -48,6 +50,12 @@ helper.propertyMatches = (originalProperty, storedProperty) => {
 helper.noDifference = (obj1, obj2) => {
 	// console.log('helper no difference', obj1, obj2);
 	return helper.allPropertiesMatch(obj1, obj2) && Object.keys(obj1).length === Object.keys(obj2).length;
+}
+
+helper.promisedWait = (milliseconds) => {
+	return new Promise( (resolve, reject) => {
+		setTimeout( () => { resolve(); }, milliseconds);
+	})
 }
 
 // helper.populateDb = require('./populateDb');
