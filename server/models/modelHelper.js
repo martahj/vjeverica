@@ -70,17 +70,19 @@ modelHelper.createModel = (tableName, attrs) => {
 		  .catch( err => this.reportError(failureDescripion, result) )
 	};
 
+	//returns the element searched for, or else an empty array
 	Model.findById = function(id) {
 		return this.findByAttribute(id, 'id')
 		  .then( matching => {
 		  	if (matching.length > 1) {
-		  		throw new Error('')
+		  		throw new Error('multiple entries in ' + this.table + ' with id ' + id)
 		  	} else {
 		  		return matching[0] || matching;
 		  	}
 		  })
 	};
 
+	//returns an array of elements matching the search
 	Model.findByAttribute = function(searchTerm, attribute) {
 		let successDescription = 'Success searching for entries in ' + this.table + ' where ' + searchTerm + '=' + attribute;
 		let failureDescripion = 'Error searching for entries in ' + this.table + ' where ' + searchTerm + '=' + attribute;
