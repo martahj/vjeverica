@@ -9,4 +9,4 @@ addons:
 before_script:
 - npm install -g knex
 - psql -c 'create database test;' -U postgres
-- migrate_test
+- npm run migrate_test
