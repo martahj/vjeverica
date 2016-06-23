@@ -48,7 +48,7 @@ describe('******* Token model ******* ', function() {
 		  	let theToken = allTokens[0];
 		  	token1Id = theToken.id;
 		  	expect(theToken).to.be.an('object');
-		  	expect(theToken).to.have.all.keys(['id', 'token']);
+		  	expect(theToken).to.have.any.keys(['id', 'token']);
 		  })
 	})
 

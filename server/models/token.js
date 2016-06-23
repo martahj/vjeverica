@@ -55,6 +55,10 @@ Token.decodeToken = function(token) {
 	})
 }
 
-
+//adds the token to the database
+Token.createToken = function(email) {
+	return Token.generateToken(email)
+	  .then( token => Token.create({token}) )
+}
 
 
