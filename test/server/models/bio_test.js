@@ -16,7 +16,6 @@ describe('******* Bio model ******* ', function() {
 	}
 	let bio1Id;
 	let newBio1Text = 'changed!'
-	// let newBio1Order = 5;
 
 	let bio2 = {
 		text: 'second added',
@@ -212,13 +211,12 @@ describe('******* Bio model ******* ', function() {
 		  	expect(bios).to.be.an('array');
 		  	expect(bios).to.have.length(6);
 
-		  	expect(helper.propertyMatches(bio1.text, bios[0].text)).to.be.true;
-		  	expect(helper.propertyMatches(bio6.text, bios[1].text)).to.be.true;
-		  	expect(helper.propertyMatches(bio3.text, bios[2].text)).to.be.true;
+		  	expect(helper.propertyMatches(newBio1Text, bios[0].text)).to.be.true;
+		  	expect(helper.propertyMatches(newBio3Text, bios[1].text)).to.be.true;
+		  	expect(helper.propertyMatches(bio6.text, bios[2].text)).to.be.true;
 		  	expect(helper.propertyMatches(bio5.text, bios[3].text)).to.be.true;
 		  	expect(helper.propertyMatches(bio4.text, bios[4].text)).to.be.true;
-		  	expect(helper.propertyMatches(bio3.text, bios[5].text)).to.be.true;
-
+		  	expect(helper.propertyMatches(bio2.text, bios[5].text)).to.be.true;
 		  })
 	})
 

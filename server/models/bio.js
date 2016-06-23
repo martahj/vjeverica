@@ -36,7 +36,22 @@ Bio.getAllBios = function() {
 }
 
 Bio.updateBio = function(id, updateAttrs) {
-	//
+	return new Promise( (resolve, reject) => {
+		if (updateAttrs.order) {
+			return Bio.orderConflicts(updateAttrs)
+			  .then( conflicts => {
+			  	if (conflicts) {
+			  		return Bio.reorder(updateAttrs.order)
+			  	} else {
+			  		return;
+			  	}
+			  })
+			  .then( () => resolve() )
+		} else {
+			resolve();
+		}
+	})
+	.then( () => Bio.update({id}, updateAttrs))
 }
 
 Bio.checkForOrder = function(bioAttrs) {
