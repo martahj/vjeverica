@@ -11,6 +11,7 @@ const React = require('react');
 const ReactDOMServer = require('react-dom/server');
 const db = require('./server/db');
 
+let fakedb = require('./server/fakedb.js');
 
 /*
   Folder paths
@@ -58,6 +59,11 @@ appRoutes.get('/bundle.js', (req, res) => {
 	res.sendFile(Path.resolve(distFolder, 'bundle.js'));
 })
 
+
+appRoutes.get('/data', (req, res) => {
+	console.log('trynna get data');
+	res.status(200).json(fakedb)
+})
 
 appRoutes.get('*', (req, res) => {
 	res.sendFile(Path.resolve(clientFolder, 'index.html'))
