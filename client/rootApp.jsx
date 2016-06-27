@@ -1,11 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import {Provider} from 'react-redux';
+import {Provider} from 'react-redux';
 
 import ClientRoutes from '../routing/clientRoutes.jsx';
 
 
-// import store from '../store/store.js';
+import store from '../store/store.js';
+console.log('store', store);
 // const myStore = store();
 // console.log('store', store, 'my store', myStore);
 
@@ -25,7 +26,10 @@ require('./styles/css/styles.css');
 
 if (typeof window !== 'undefined') {
 	window.onload = () => {
-		ReactDOM.render( <ClientRoutes s={defaultState} />
-			             , document.getElementById('root'));
+		ReactDOM.render( 
+			<Provider store={store}>
+			  <ClientRoutes s={defaultState} />
+			</Provider>
+			, document.getElementById('root'));
 	}
 }

@@ -1,8 +1,12 @@
 "use strict"
 
 const defaultState = {
-	bio: [],
-	intro: []
+	bio: {
+		bios: []
+	},
+	intro: {
+		text: []
+	}
 }
 
 export default defaultState;

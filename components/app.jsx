@@ -8,11 +8,18 @@ import {RouteHandler} from 'react-router';
 import Navbar from './navbar.jsx';
 import Brandbar from './brandbar.jsx';
 
-// const mapStateToProps = (state) => {
-//   return {
-//   	userId: state.userId
-//   }
-// }
+const mapStateToProps = (state) => {
+	console.log('mapping state to props', state);
+  return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onClick: (something) => {
+			dispatch(a(something))
+		}
+	}
+}
 
 // const mapDispatchToProps = (dispatch) => {
 // 	return {}
@@ -43,6 +50,8 @@ import Brandbar from './brandbar.jsx';
 class App extends Component {
 
 	render() {
+		console.log('app state', this.state);
+		console.log('app props', this.props);
 		// let s = this.props.routes[0].s || this.props.route.s;
 
 		return (
@@ -55,5 +64,7 @@ class App extends Component {
 	}
 }
 
-export default App;
+export default connect(mapStateToProps, mapDispatchToProps)(App);
+
+// export default App;
 
