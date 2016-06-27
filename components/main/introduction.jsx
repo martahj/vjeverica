@@ -1,8 +1,12 @@
 import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
+
 
 class Introduction extends Component {
 	render () {
+		console.log('props in Introduction', this.props);
+
 		return (
 			<div className="row">
 			  <div className="box">
@@ -20,4 +24,12 @@ class Introduction extends Component {
 	}
 }
 
-export default Introduction;
+const mapStateToProps = (state) => {
+  return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Introduction);

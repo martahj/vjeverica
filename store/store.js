@@ -12,7 +12,7 @@ let reducer = (state, action) => {
 // let store = () => {
 // 	return createStore(reducer, defaultState, applyMiddleware(thunk));
 // }
-let store = createStore(bioReducer, defaultState, applyMiddleware(thunk));
+let store = createStore(root, defaultState, applyMiddleware(thunk));
 
 export default store;
 
@@ -28,27 +28,27 @@ action
 // }
 
 //action creator
-function addBio(text) {
-	return {
-		type: 'ADD_BIO',
-		text: text
-	}
-}
+// function addBio(text) {
+// 	return {
+// 		type: 'ADD_BIO',
+// 		text: text
+// 	}
+// }
 
-function deleteBio(id) {
-	return {
-		type: 'REMOVE_BIO',
-		id: id
-	}
-}
+// function deleteBio(id) {
+// 	return {
+// 		type: 'REMOVE_BIO',
+// 		id: id
+// 	}
+// }
 
-function bioReducer(state, action) {
-	switch (action.type) {
-		case 'ADD_BIO':
-		  let newState = Object.assign({}, state);
-		  newState.bio.bios = [...state.bio.bios, action.text ]
-		  return newState;
-		default: 
-		  return state;
-	}
-}
+// function bioReducer(state, action) {
+// 	switch (action.type) {
+// 		case 'ADD_BIO':
+// 		  let newState = Object.assign({}, state);
+// 		  newState.bio.bios = [...state.bio.bios, action.text ]
+// 		  return newState;
+// 		default: 
+// 		  return state;
+// 	}
+// }

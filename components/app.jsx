@@ -8,45 +8,6 @@ import {RouteHandler} from 'react-router';
 import Navbar from './navbar.jsx';
 import Brandbar from './brandbar.jsx';
 
-const mapStateToProps = (state) => {
-	console.log('mapping state to props', state);
-  return state;
-}
-
-const mapDispatchToProps = (dispatch) => {
-	return {
-		onClick: (something) => {
-			dispatch(a(something))
-		}
-	}
-}
-
-// const mapDispatchToProps = (dispatch) => {
-// 	return {}
-// }
-
-// const App = ({userId}) => {
-// 	console.log('app user id', userId);
-// 	return (
-// 		<div>
-// 		  <h3>Welcome {userId}</h3>
-// 		  <Brandbar />
-// 		  <Navbar />
-// 		  {this.props.children}
-// 		</div>
-// 	)
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// connect( state => ({
-// 	userId: state.userId
-// }))
-
-
-
-// no redux
-
 class App extends Component {
 
 	render() {
@@ -64,7 +25,18 @@ class App extends Component {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(App);
+const mapStateToProps = (state) => {
+	// console.log('mapping state to props', state);
+  return state;
+}
 
-// export default App;
+const mapDispatchToProps = (dispatch) => {
+	return {
+		onClick: (something) => {
+			dispatch(a(something))
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 

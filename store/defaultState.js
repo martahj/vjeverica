@@ -5,7 +5,7 @@ const defaultState = {
 		bios: []
 	},
 	intro: {
-		text: []
+		text: ['One', 'two']
 	}
 }
 
