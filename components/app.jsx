@@ -10,6 +10,10 @@ import Brandbar from './brandbar.jsx';
 
 class App extends Component {
 
+	// componentWillMount () {
+
+	// }
+
 	render() {
 		console.log('app state', this.state);
 		console.log('app props', this.props);
@@ -26,16 +30,12 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-	// console.log('mapping state to props', state);
+	console.log('mapping state to props', state);
   return state;
 }
 
 const mapDispatchToProps = (dispatch) => {
-	return {
-		onClick: (something) => {
-			dispatch(a(something))
-		}
-	}
+	return {}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
