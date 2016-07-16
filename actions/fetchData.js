@@ -12,6 +12,5 @@ let fetchData = () => {
 	}
 }
 
-let dispatch_fetchData = () => dispatch(fetchData())
 
-export default dispatch_fetchData
+export default fetchData
