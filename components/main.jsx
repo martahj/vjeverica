@@ -7,8 +7,9 @@ import Events from './main/events.jsx';
 
 class Main extends Component {
     render() {
+    	console.log('props in main', this.props);
         // console.log('props in main', this.props);
-        let s = this.props.routes[0].s || this.props.routes[1].s
+        // let s = this.props.routes[0].s || this.props.routes[1].s
         return (
             <div className="container">
                 <Introduction />
@@ -16,4 +17,20 @@ class Main extends Component {
         )
     }
 }
+
 export default Main;
+
+// const mapStateToProps = (state) => {
+// 	// console.log('mapping state to props', state);
+//   return state;
+// }
+
+// const mapDispatchToProps = (dispatch) => {
+// 	return {
+// 		onClick: (something) => {
+// 			dispatch(a(something))
+// 		}
+// 	}
+// }
+
+// export default connect(mapStateToProps, mapDispatchToProps)(Main);

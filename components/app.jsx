@@ -8,41 +8,28 @@ import {RouteHandler} from 'react-router';
 import Navbar from './navbar.jsx';
 import Brandbar from './brandbar.jsx';
 
-// const mapStateToProps = (state) => {
-//   return {
-//   	userId: state.userId
-//   }
-// }
-
-// const mapDispatchToProps = (dispatch) => {
-// 	return {}
-// }
-
-// const App = ({userId}) => {
-// 	console.log('app user id', userId);
-// 	return (
-// 		<div>
-// 		  <h3>Welcome {userId}</h3>
-// 		  <Brandbar />
-// 		  <Navbar />
-// 		  {this.props.children}
-// 		</div>
-// 	)
-// }
-
-// export default connect(mapStateToProps, mapDispatchToProps)(App);
-
-// connect( state => ({
-// 	userId: state.userId
-// }))
-
-
-
-// no redux
+//BAD PRACTICE JUST TO SEE IF FETCH HAPPENS
+// import getInitialState from '../client/api/getInitialState.js';
+// import {fetchData} from '../actions/fetchData.js';
+import {getData} from '../actions/fetchData.js';
+import {receiveData} from '../actions/fetchData.js';
+import getInitialState from '../client/api/getInitialState.js';
+console.log('getInitialState', getInitialState);
 
 class App extends Component {
 
+	componentWillMount () {
+		console.log('app state', this.state);
+		console.log('app props', this.props);
+		console.log('about to call fetch data')
+		this.props.fetchData();
+	}
+
 	render() {
+		// console.log('app state', this.state);
+		// console.log('app props', this.props);
+		// console.log('about to call fetch data')
+		// this.props.fetchData();
 		// let s = this.props.routes[0].s || this.props.route.s;
 
 		return (
@@ -55,5 +42,27 @@ class App extends Component {
 	}
 }
 
-export default App;
+const mapStateToProps = (state) => {
+	console.log('mapping state to props', state);
+  return {
+  	fetchData: state.fetchData
+  }
+   return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		fetchData: () => {
+			dispatch(getData())
+
+			return getInitialState()
+			  .then( data => {
+			  	console.log('data from getInitialState', data);
+			  	dispatch(receiveData(data));
+			  })
+		}
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 

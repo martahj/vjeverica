@@ -16,8 +16,8 @@ module.exports = {
 	  'While maintaining a regular performance schedule, in July, 2009 Shirley began teaching accordion, hoping to pass on her knowledge and love of her instrument and music to the next generation.'
 	],
 	intro: [
-	  'words words',
-	  'and moar words'
+	  {id: 3, text: 'words words'},
+	  {id: 2, text: 'and moar words'}
 	]
 }
 

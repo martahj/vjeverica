@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import ReactDOM from 'react-dom';
 
 class AccordionLessons extends Component {
@@ -12,4 +13,12 @@ class AccordionLessons extends Component {
 	}
 }
 
-export default AccordionLessons;
+const mapStateToProps = (state) => {
+  return state;
+}
+
+const mapDispatchToProps = (dispatch) => {
+	return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(AccordionLessons);
