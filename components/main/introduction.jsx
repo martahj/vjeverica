@@ -9,8 +9,9 @@ class Introduction extends Component {
 	render () {
 		let paragraphClick = this.props.paragraphClick;
 		console.log('paragraph click in intro', paragraphClick);
+		console.log('paragraphs in intro', this.props.paragraphs);
 
-		console.log('props in Introduction', this.props);
+		// console.log('props in Introduction', this.props);
 		let paragraphs = this.props.paragraphs.map( paragraph => 
 			               <Paragraph key={paragraph.id}
 			                          paragraph={paragraph}
@@ -47,7 +48,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		paragraphClick: (id) => {
-			console.log('registered click on paragraph', id);
+			// dispatch_changeIntro(id, 'this is the new text');
+			// console.log('registered click on paragraph', id);
 			dispatch(changeIntro(id, 'this is the new text'))
 		}
 	};

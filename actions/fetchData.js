@@ -1,16 +1,27 @@
-// const store = require('../store/store.js');
+// import getInitialState from '../client/api/getInitialState';
 
-const FETCH_DATA = 'FETCH_DATA';
+export const GET_DATA = 'GET_DATA';
+export const RECEIVE_DATA = 'RECEIVE_DATA';
 
-/* Template
-{type: FETCH_DATA}
-*/
-
-let fetchData = () => {
+export const getData = () => {
 	return {
-		type: FETCH_DATA
+		type: GET_DATA
 	}
 }
 
+export const receiveData = (json) => {
+	return {
+		type: RECEIVE_DATA,
+		data: json,
+		receivedAt: Date.now()
+	}
+}
 
-export default fetchData
+// export const fetchData = () => {
+// 	dispatch(getData())
+
+// 	return getInitialState()
+// 	  .then( data => {
+// 	  	dispatch(receiveData(data));
+// 	  })
+// }

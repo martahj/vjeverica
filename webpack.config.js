@@ -2,7 +2,6 @@ const Path = require('path');
 
 module.exports = {
 	entry: [
-	    // 'whatwg-fetch',
 	    './client/rootApp.jsx',
 	],
 	output: {

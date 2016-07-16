@@ -2,11 +2,20 @@
 // import rootActions from '../actions/rootActions';
 
 const defaultState = {
+	user: {
+		isFetching: false,
+		username: null,
+		recievedAt: null
+	},
 	bio: {
-		bios: []
+		isFetching: false,
+		bios: ['test bio'],
+		recievedAt: null
 	},
 	intro: {
-		text: [{id: 3, text:'One'}, {id: 8, text: 'two'}]
+		isFetching: false,
+		text: [{id: 90, text:'One'}, {id: 91, text: 'two'}],
+		recievedAt: null
 	}
 }
 

@@ -1,7 +1,10 @@
 import {createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
+// import createLogger from 'redux-logger'
+// const loggerMiddleware = createLogger();
 import defaultState from './defaultState';
 import root from '../reducers/root';
+
 
 console.log('default state in store', defaultState);
 
