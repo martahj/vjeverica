@@ -8,11 +8,14 @@ import {RouteHandler} from 'react-router';
 import Navbar from './navbar.jsx';
 import Brandbar from './brandbar.jsx';
 
+//BAD PRACTICE JUST TO SEE IF FETCH HAPPENS
+import getInitialState from '../client/api/getInitialState.js';
+
 class App extends Component {
 
-	// componentWillMount () {
-
-	// }
+	componentWillMount () {
+		getInitialState(); //BAD
+	}
 
 	render() {
 		console.log('app state', this.state);

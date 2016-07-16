@@ -1,4 +1,5 @@
 "use strict"
+
 // import {combineReducers} from 'redux';
 
 import defaultState from '../store/defaultState.js';
@@ -16,6 +17,14 @@ function root (state=defaultState, action) {
 		  console.log('old state', state);
 		  console.log('new state', newState);
 		  return newState;
+
+		case 'FETCH_DATA':
+		  console.log('inside fetch data reducer');
+		  // return fetch('/data')
+		  //   .then( data => {
+		  //   	console.log('got data from ')
+		  //   })
+		  return state;
 
 		default:
 		  return state;

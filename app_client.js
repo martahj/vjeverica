@@ -60,8 +60,8 @@ appRoutes.get('/bundle.js', (req, res) => {
 })
 
 
-appRoutes.get('/data', (req, res) => {
-	console.log('trynna get data');
+appRoutes.get('/initialState', (req, res) => {
+	console.log('trynna get initial state');
 	res.status(200).json(fakedb)
 })
 
