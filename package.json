@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node app_client",
     "ssr": "node app_ssr",
+    "ssr_compiled": "node dist/compiledServer.js",
     "restartdb_dev": "dropdb vjev_dev && npm run makedb_dev && npm run migrate_dev",
     "restartdb_test": "dropdb vjev_test && npm run makedb_test && npm run migrate_test",
     "makedb_dev": "createdb vjev_dev",
@@ -51,6 +52,7 @@
     "react-router": "^2.4.1",
     "redux": "^3.5.2",
     "redux-thunk": "^2.1.0",
+    "source-map-support": "^0.4.2",
     "style-loader": "^0.13.1",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1"

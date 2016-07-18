@@ -57,3 +57,5 @@ function root (state=defaultState, action) {
 }
 
 export default root;
+
+export default root;
