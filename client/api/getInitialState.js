@@ -6,7 +6,7 @@ const getInitialState = () => {
 		fetch('/initialState')
 		  .then( resp => resp.json() )
 		  .then( data => {
-		  	console.log('GOT DATA!', data);
+		  	// console.log('GOT DATA!', data);
 		  	resolve(data);
 		  })
 	})

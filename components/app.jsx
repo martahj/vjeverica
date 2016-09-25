@@ -19,9 +19,9 @@ console.log('getInitialState', getInitialState);
 class App extends Component {
 
 	componentWillMount () {
-		console.log('app state', this.state);
-		console.log('app props', this.props);
-		console.log('about to call fetch data')
+		// console.log('app state', this.state);
+		// console.log('app props', this.props);
+		// console.log('about to call fetch data')
 		this.props.fetchData();
 	}
 
@@ -43,7 +43,7 @@ class App extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log('mapping state to props', state);
+	// console.log('mapping state to props', state);
   return {
   	fetchData: state.fetchData
   }
@@ -57,7 +57,7 @@ const mapDispatchToProps = (dispatch) => {
 
 			return getInitialState()
 			  .then( data => {
-			  	console.log('data from getInitialState', data);
+			  	// console.log('data from getInitialState', data);
 			  	dispatch(receiveData(data));
 			  })
 		}
@@ -65,4 +65,3 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
-

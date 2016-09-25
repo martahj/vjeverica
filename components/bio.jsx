@@ -8,7 +8,7 @@ class Bio extends Component {
 	render () {
 		// let s = this.props.routes[0].s || this.props.routes[1].s
 		// console.log('s in bio', s);
-		console.log('props in bio', this.props);
+		// console.log('props in bio', this.props);
 
 		return (
 			<div>

@@ -7,7 +7,6 @@ import Events from './main/events.jsx';
 
 class Main extends Component {
     render() {
-    	console.log('props in main', this.props);
         // console.log('props in main', this.props);
         // let s = this.props.routes[0].s || this.props.routes[1].s
         return (

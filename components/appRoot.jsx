@@ -10,11 +10,11 @@ import Routes from '../routing/routes.jsx';
 class AppRoot extends Component {
 
 	constructor (store) {
-		console.log('props in app root', this.props);
+		// console.log('props in app root', this.props);
 	}
 
 	render () {
-		console.log('props passed into approot', this.props);
+		// console.log('props passed into approot', this.props);
 		return (
 			<div>
 			    <Brandbar />

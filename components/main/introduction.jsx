@@ -8,11 +8,11 @@ import Paragraph from './paragraph.jsx';
 class Introduction extends Component {
 	render () {
 		let paragraphClick = this.props.paragraphClick;
-		console.log('paragraph click in intro', paragraphClick);
-		console.log('paragraphs in intro', this.props.paragraphs);
+		// console.log('paragraph click in intro', paragraphClick);
+		// console.log('paragraphs in intro', this.props.paragraphs);
 
 		// console.log('props in Introduction', this.props);
-		let paragraphs = this.props.paragraphs.map( paragraph => 
+		let paragraphs = this.props.paragraphs.map( paragraph =>
 			               <Paragraph key={paragraph.id}
 			                          paragraph={paragraph}
 			                          clickFunction={ () => this.props.paragraphClick(paragraph.id) }
@@ -38,7 +38,7 @@ class Introduction extends Component {
 }
 
 const mapStateToProps = (state) => {
-	console.log('state in introduction mapping to props', state);
+	// console.log('state in introduction mapping to props', state);
   return {
   	paragraphClick: state.paragraphClick,
   	paragraphs: state.intro.text

@@ -6,7 +6,7 @@ import ClientRoutes from '../routing/clientRoutes.jsx';
 
 
 import store from '../store/store.js';
-console.log('store', store);
+// console.log('store', store);
 // const myStore = store();
 // console.log('store', store, 'my store', myStore);
 
@@ -26,7 +26,7 @@ require('./styles/css/styles.css');
 
 if (typeof window !== 'undefined') {
 	window.onload = () => {
-		ReactDOM.render( 
+		ReactDOM.render(
 			<Provider store={store}>
 			  <ClientRoutes s={defaultState} />
 			</Provider>
