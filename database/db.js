@@ -8,14 +8,14 @@ else {
 }
 
 const collections = [
-  'users',
-  'biotext',
-  'images',
-  'sessions',
-  'lessonsText',
-  'cds',
-  'calendarEvents',
-  'majorEvents',
+  // 'users',
+  // 'biotext',
+  // 'images',
+  // 'sessions',
+  // 'lessonsText',
+  // 'cds',
+  'calendarEvents'
+  // 'majorEvents',
 ];
 
 const deleteTable = (tablename) => {
