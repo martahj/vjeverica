@@ -7,7 +7,7 @@ class AccordionLessons extends Component {
 	render () {
 		return (
 			<div>
-			  <h3>{this.props.s.lessonsText}</h3>
+			  <h3>Lessons</h3>
 			</div>
 		)
 	}

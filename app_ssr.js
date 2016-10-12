@@ -12,7 +12,6 @@ const match = ReactRouter.match;
 const RouterContext = ReactRouter.RouterContext;
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const db = require('./server/db');
 
 
 /*

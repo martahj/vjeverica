@@ -10,14 +10,10 @@ node_modules/
 #bundle
 dist/
 
-#database
-db/
-
 *.DS_Store
 
 #config
 config.js
 
-#seeds
-server/seeds/
-
+#migrations
+database/migrations

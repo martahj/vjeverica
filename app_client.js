@@ -9,9 +9,6 @@ const Url = require('url');
 const ReactRouter = require('react-router');
 const React = require('react');
 const ReactDOMServer = require('react-dom/server');
-const db = require('./server/db');
-
-let fakedb = require('./server/fakedb.js');
 
 /*
   Folder paths
@@ -62,7 +59,7 @@ appRoutes.get('/bundle.js', (req, res) => {
 
 appRoutes.get('/initialState', (req, res) => {
 	console.log('trynna get initial state');
-	res.status(200).json(fakedb)
+	res.status(200).json({})
 })
 
 appRoutes.get('*', (req, res) => {
@@ -81,7 +78,7 @@ if (process.env.NODE_ENV !== 'test') {
 	let port = process.env.port || 4000;
 	app.listen(port);
 	console.log('Listening on port', port);
-	
+
 } else {
 	module.exports = appRoutes;
 }

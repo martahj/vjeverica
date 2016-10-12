@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
 
+import Introduction from './bio/introduction';
+import History from './bio/history';
 
 class Bio extends Component {
 
@@ -12,7 +14,8 @@ class Bio extends Component {
 
 		return (
 			<div>
-			  <h3></h3>
+			  <Introduction />
+				<History />
 			</div>
 		)
 	}
