@@ -1,7 +1,9 @@
 "use strict"
-const db = require('../db.js');
-const coll = db.collection('calendarEvents');
+import db from '../db';
+import makeModel from '../helpers/makeModel';
 
-const CalendarEvents = {};
+const COLLECTION_NAME = 'calendarEvents';
+
+const CalendarEvents = makeModel(COLLECTION_NAME);
 
 export default CalendarEvents;
